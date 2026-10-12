@@ -101,17 +101,6 @@ function initFaqAccordion() {
   });
 }
 
-// Current selected amount state
-let currentSelectedAmount = 500;
-
-const AMOUNT_IMPACTS = {
-  100: 'Supplies clean drinking water sachets and ORS hydration packets for children.',
-  250: 'Provides emergency high-energy biscuits, dry rations, and basic soap.',
-  500: 'Supplies water purification tablets & emergency hydration sachets for an affected family.',
-  1000: 'Procures 10kg rice, lentils, salt, cooking oil, and nutritious dry rations for a family.',
-  2000: 'Provides emergency food pack plus a warm wool blanket and waterproof ground sheet.'
-};
-
 // -----------------------------------------------------------------------------
 // 5. Razorpay Donation Routing & Pre-Payment Modal
 // -----------------------------------------------------------------------------
