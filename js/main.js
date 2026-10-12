@@ -143,11 +143,9 @@ function initDonationRouting() {
   }
 
   donateButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const amount = btn.getAttribute('data-amount') || null;
-      openModal(amount);
-    });
+    btn.setAttribute('href', RELIEF_CONFIG.razorpayHostedUrl);
+    btn.setAttribute('target', '_blank');
+    btn.setAttribute('rel', 'noopener noreferrer');
   });
 
   if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
