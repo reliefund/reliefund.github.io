@@ -583,7 +583,7 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   Donation Selection Card (Exact match to reference UI)
+   Donation Selection Card (Highly Highlighted Emergency Card)
    -------------------------------------------------------------------------- */
 .donation-card {
   background: #ffffff;
@@ -593,6 +593,55 @@ a:hover {
   margin-bottom: 1.5rem;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
   color: #0f172a;
+}
+
+.donation-card--highlighted {
+  border: 2.5px solid #f59e0b;
+  border-radius: 18px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5), 0 0 30px rgba(245, 158, 11, 0.35);
+  margin-top: 1.25rem;
+  margin-bottom: 1.75rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.donation-card--highlighted:hover {
+  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.55), 0 0 40px rgba(245, 158, 11, 0.45);
+}
+
+.donation-card__highlight-bar {
+  background: linear-gradient(90deg, #fef3c7 0%, #fffbeb 100%);
+  border-bottom: 1.5px solid #fde68a;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.8125rem;
+  color: #92400e;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.live-dot {
+  width: 9px;
+  height: 9px;
+  background-color: #dc2626;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.25);
+  animation: pulse-dot 2s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.6); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(220, 38, 38, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+.donation-card__inner-content {
+  padding: 1.35rem 1.35rem 1.5rem 1.35rem;
 }
 
 .donation-card__header {
