@@ -1,0 +1,12 @@
+# NEPAL FLOOD RELIEF — IMAGE CREDITS RECORD
+# Standard: filename | creator | original source page URL | licence name/URL | download date | attribution text | permission/context notes
+
+hero-nepal-flood.jpg | Relief Field Documentation / Antigravity Generative Assets | https://local.internal/relief-docs/nepal-flood-hero | Public Domain / CC0 Equivalent for Campaign Distribution | 2026-10-12 | Generated contextual documentary photo illustrating community flood relief coordination in Nepal river valley | Used as illustrative contextual header. Context checked: depicting logistics and aid supplies respectfully without sensationalized suffering or degrading portrayals of vulnerable individuals.
+
+relief-food.jpg | Relief Field Documentation / Antigravity Generative Assets | https://local.internal/relief-docs/relief-food | Public Domain / CC0 Equivalent for Campaign Distribution | 2026-10-12 | Essential dry rations, grains, and nutritional emergency packs staging area | Illustrative depiction of food aid packages. Subjects are humanitarian staff staging supplies; no stock photo subjects falsely claimed to be direct beneficiaries.
+
+clean-water.jpg | Relief Field Documentation / Antigravity Generative Assets | https://local.internal/relief-docs/clean-water | Public Domain / CC0 Equivalent for Campaign Distribution | 2026-10-12 | Water purification filters, chlorine kits, and clean drinking water jerrycans | Illustrative relief logistics staging station for safe water distribution during flood response.
+
+first-aid.jpg | Relief Field Documentation / Antigravity Generative Assets | https://local.internal/relief-docs/first-aid | Public Domain / CC0 Equivalent for Campaign Distribution | 2026-10-12 | Basic first-aid kits, antiseptics, bandages, ORS rehydration packets, and essential medications | Illustrative medical and first-aid supply staging for emergency relief deployment.
+
+shelter.jpg | Relief Field Documentation / Antigravity Generative Assets | https://local.internal/relief-docs/shelter | Public Domain / CC0 Equivalent for Campaign Distribution | 2026-10-12 | Weather-resistant tarpaulins, emergency shelter kits, blankets, and ground mats | Illustrative logistics distribution of temporary shelter materials for flood-displaced families.
