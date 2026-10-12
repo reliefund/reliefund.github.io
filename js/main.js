@@ -15,7 +15,7 @@ const RELIEF_CONFIG = {
   razorpayHostedUrl: 'https://pages.razorpay.com/sample-nepal-flood-relief',
   
   // Verification details
-  initiativeName: 'Nepal Flood Emergency Relief Initiative',
+  initiativeName: 'Relief Fund — Nepal Flood Emergency Initiative',
   organizerName: '[TODO: Organizer / Coordination Team Name]',
   contactEmail: 'reliefund90@gmail.com',
   

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <defs>
+    <linearGradient id="relief-bg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="50%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#c2410c"/>
+    </linearGradient>
+    <linearGradient id="heart-glow" x1="16" y1="12" x2="32" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#ffedd5"/>
+    </linearGradient>
+    <linearGradient id="inner-border" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded Premium App Icon Shield / Tile -->
+  <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#relief-bg)"/>
+  <rect x="3" y="3" width="42" height="42" rx="11" stroke="url(#inner-border)" stroke-width="1.5"/>
+
+  <!-- Subtle Ambient Circle Glow -->
+  <circle cx="24" cy="21" r="12" fill="#ffffff" fill-opacity="0.12"/>
+
+  <!-- Helping Hands Gentle Support Arc -->
+  <path d="M11 29.5C13.5 33 18 35 24 35C30 35 34.5 33 37 29.5" stroke="#ffffff" stroke-width="2.25" stroke-linecap="round"/>
+
+  <!-- Water Wave / River Relief Ripple -->
+  <path d="M14 38C17 37 20.5 39 24 38C27.5 37 31 39 34 38" stroke="#ffffff" stroke-opacity="0.75" stroke-width="1.75" stroke-linecap="round"/>
+
+  <!-- Central Vibrant Heart -->
+  <path d="M24 27.5L22.7 26.3C18.2 22.2 15.2 19.5 15.2 16.1C15.2 13.4 17.3 11.3 20 11.3C21.5 11.3 23 12 24 13.2C25 12 26.5 11.3 28 11.3C30.7 11.3 32.8 13.4 32.8 16.1C32.8 19.5 29.8 22.2 25.3 26.3L24 27.5Z" fill="url(#heart-glow)"/>
+
+  <!-- Emergency Medical / Hope Cross in Heart Center -->
+  <rect x="22.75" y="15.5" width="2.5" height="6.5" rx="1" fill="#ea580c"/>
+  <rect x="20.75" y="17.5" width="6.5" height="2.5" rx="1" fill="#ea580c"/>
+</svg>
