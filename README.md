@@ -76,9 +76,8 @@ Every Donate button on the page (`.js-donate-btn`) automatically routes through 
 1. Open `index.html` and search for `[TODO:`:
    - Organizer Name: Replace `[TODO: Organizer / Volunteer Coordination Team]` in the About and Footer sections.
    - Target Region: Replace `[TODO: Verified Flood Districts...]` with the exact river basin or district names.
-   - Contact Email: Replace `relief-inquiry@example.org` with the verified organizer email.
-   - Phone Helpline: Replace `+977 1-XXXXXXX` with the active hotline.
-2. In `js/main.js`, update `contactEmail` and `contactPhone` in `RELIEF_CONFIG`.
+   - Contact Email: `reliefund90@gmail.com` (Direct verification & donor inquiries).
+2. In `js/main.js`, update `contactEmail` in `RELIEF_CONFIG`.
 
 ### C. Adding New Field Updates
 In `index.html`, navigate to `#updates`. Copy an `<article class="update-entry">` block and fill in:

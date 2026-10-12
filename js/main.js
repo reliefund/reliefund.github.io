@@ -17,8 +17,7 @@ const RELIEF_CONFIG = {
   // Verification details
   initiativeName: 'Nepal Flood Emergency Relief Initiative',
   organizerName: '[TODO: Organizer / Coordination Team Name]',
-  contactEmail: 'relief-inquiry@example.org', // [TODO: Official contact email]
-  contactPhone: '+977 1-XXXXXXX',             // [TODO: Official phone/helpline]
+  contactEmail: 'reliefund90@gmail.com',
   
   // Payment behavior
   supportsCustomAmounts: true,
