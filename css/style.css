@@ -578,8 +578,117 @@ a:hover {
   font-size: 1.125rem;
   line-height: 1.6;
   color: #e2e8f0;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.5rem;
   max-width: 600px;
+}
+
+/* Amount Selector Component (Above Donate Button) */
+.donation-selector {
+  background: rgba(11, 31, 45, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.donation-selector__label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #fbbf24;
+  margin-bottom: 0.75rem;
+}
+
+.amount-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  align-items: center;
+}
+
+.amount-chip {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all var(--transition-fast);
+  min-height: 42px;
+}
+
+.amount-chip:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.amount-chip.is-selected {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.5);
+}
+
+.custom-amount-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.currency-symbol {
+  position: absolute;
+  left: 0.75rem;
+  color: #fbbf24;
+  font-weight: 700;
+  pointer-events: none;
+  font-size: 0.9375rem;
+}
+
+.custom-amount-input {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 0.5rem 0.625rem 0.5rem 1.625rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-family: inherit;
+  width: 110px;
+  min-height: 42px;
+  transition: all var(--transition-fast);
+}
+
+.custom-amount-input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.custom-amount-input:focus,
+.custom-amount-input.is-active {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: #fbbf24;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.5);
+}
+
+.amount-impact-hint {
+  margin-top: 0.875rem;
+  font-size: 0.875rem;
+  color: #e2e8f0;
+  line-height: 1.5;
+  padding-top: 0.625rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.amount-impact-hint strong {
+  color: #fbbf24;
 }
 
 .hero__ctas {

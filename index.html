@@ -96,12 +96,31 @@
           <p class="hero__lead">
             Severe monsoon rainfall and swollen river basins have submerged rural settlements and displaced vulnerable households across Nepal. We are an independent volunteer coalition delivering emergency food, clean water, medical essentials, and temporary shelter directly to affected communities.
           </p>
+          <!-- Select Contribution Amount Component (Above Donate Button) -->
+          <div class="donation-selector" id="hero-donation-selector" aria-label="Select donation amount">
+            <span class="donation-selector__label">Select Contribution Amount:</span>
+            <div class="amount-chips" role="radiogroup" aria-label="Choose donation amount in Rupees">
+              <button type="button" class="amount-chip" data-amount="100" role="radio" aria-checked="false">₹100</button>
+              <button type="button" class="amount-chip" data-amount="250" role="radio" aria-checked="false">₹250</button>
+              <button type="button" class="amount-chip is-selected" data-amount="500" role="radio" aria-checked="true">₹500</button>
+              <button type="button" class="amount-chip" data-amount="1000" role="radio" aria-checked="false">₹1,000</button>
+              <button type="button" class="amount-chip" data-amount="2000" role="radio" aria-checked="false">₹2,000</button>
+              <div class="custom-amount-wrapper">
+                <span class="currency-symbol">₹</span>
+                <input type="number" class="custom-amount-input" id="custom-amount-input" placeholder="Custom" min="50" step="50" aria-label="Enter custom amount in Rupees">
+              </div>
+            </div>
+            <p class="amount-impact-hint" id="amount-impact-hint">
+              <strong>Selected: ₹500</strong> — Supplies water purification tablets & emergency hydration sachets for an affected family.
+            </p>
+          </div>
+
           <div class="hero__ctas">
-            <button type="button" class="btn btn--primary js-donate-btn">
+            <button type="button" class="btn btn--primary js-donate-btn" id="hero-donate-btn" data-amount="500">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
               </svg>
-              Donate via Razorpay
+              Donate for Their Lives
             </button>
             <a href="#how-donations-help" class="btn btn--outline-light">
               How Donations Help
@@ -685,7 +704,7 @@
           Flood waters will eventually recede, but the immediate survival needs of affected families are urgent right now. Stand with community relief efforts today.
         </p>
         <button type="button" class="btn btn--primary js-donate-btn">
-          Donate via Secure Razorpay Checkout
+          Donate for Their Lives
         </button>
       </div>
     </section>
@@ -710,8 +729,11 @@
 
       <div class="modal-body">
         <p>
-          You are about to be redirected to our official encrypted Razorpay payment page.
+          You are about to be redirected to our official encrypted Razorpay payment page to support flood-affected families.
         </p>
+        <div class="modal-amount-highlight" id="modal-amount-display" style="background:#fef3c7; border:1px solid #fcd34d; border-radius:6px; padding:0.625rem 0.875rem; margin:0.875rem 0; font-weight:600; color:#92400e;">
+          Selected Amount: <span id="modal-amount-value" style="font-size:1.15rem; color:#b45309; font-weight:800;">₹500</span>
+        </div>
         <div class="modal-info-box">
           <strong>Security Notice:</strong>
           <ul style="margin: 0.5rem 0 0 1.25rem; line-height: 1.5;">

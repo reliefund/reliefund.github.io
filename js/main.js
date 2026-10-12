@@ -101,6 +101,17 @@ function initFaqAccordion() {
   });
 }
 
+// Current selected amount state
+let currentSelectedAmount = 500;
+
+const AMOUNT_IMPACTS = {
+  100: 'Supplies clean drinking water sachets and ORS hydration packets for children.',
+  250: 'Provides emergency high-energy biscuits, dry rations, and basic soap.',
+  500: 'Supplies water purification tablets & emergency hydration sachets for an affected family.',
+  1000: 'Procures 10kg rice, lentils, salt, cooking oil, and nutritious dry rations for a family.',
+  2000: 'Provides emergency food pack plus a warm wool blanket and waterproof ground sheet.'
+};
+
 // -----------------------------------------------------------------------------
 // 5. Razorpay Donation Routing & Pre-Payment Modal
 // -----------------------------------------------------------------------------
@@ -111,6 +122,7 @@ function initDonationRouting() {
   const modalCancelBtn = document.getElementById('modal-cancel-btn');
   const modalConfirmBtn = document.getElementById('modal-confirm-btn');
   const modalTargetUrlText = document.getElementById('modal-target-url');
+  const modalAmountVal = document.getElementById('modal-amount-value');
 
   if (modalTargetUrlText) {
     modalTargetUrlText.textContent = RELIEF_CONFIG.razorpayHostedUrl;
@@ -123,11 +135,16 @@ function initDonationRouting() {
       return;
     }
 
+    const amountNum = preferredAmount ? parseInt(preferredAmount, 10) : currentSelectedAmount;
+    if (modalAmountVal && amountNum) {
+      modalAmountVal.textContent = `₹${amountNum.toLocaleString('en-IN')}`;
+    }
+
     modal.classList.add('is-active');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
 
-    // Focus close or confirm button
+    // Focus confirm button
     if (modalConfirmBtn) modalConfirmBtn.focus();
   }
 
@@ -173,17 +190,65 @@ function initDonationRouting() {
 }
 
 // -----------------------------------------------------------------------------
-// 6. Illustrative Impact Amount Selector
+// 6. Interactive Amount Selector
 // -----------------------------------------------------------------------------
 function initAmountSelector() {
-  const tierCards = document.querySelectorAll('.tier-card');
-  tierCards.forEach(card => {
-    const cta = card.querySelector('.btn');
-    if (!cta) return;
-    cta.addEventListener('click', (e) => {
-      // Handled by .js-donate-btn listener
+  const chips = document.querySelectorAll('.amount-chip');
+  const customInput = document.getElementById('custom-amount-input');
+  const hintElement = document.getElementById('amount-impact-hint');
+  const heroDonateBtn = document.getElementById('hero-donate-btn');
+
+  function updateSelection(amount, isCustom = false) {
+    currentSelectedAmount = amount;
+
+    chips.forEach(chip => {
+      const chipVal = parseInt(chip.getAttribute('data-amount'), 10);
+      const isSelected = !isCustom && chipVal === amount;
+      chip.classList.toggle('is-selected', isSelected);
+      chip.setAttribute('aria-checked', String(isSelected));
+    });
+
+    if (!isCustom && customInput) {
+      customInput.value = '';
+      customInput.classList.remove('is-active');
+    } else if (isCustom && customInput) {
+      customInput.classList.add('is-active');
+    }
+
+    if (heroDonateBtn) {
+      heroDonateBtn.setAttribute('data-amount', String(amount));
+    }
+
+    if (hintElement) {
+      const desc = AMOUNT_IMPACTS[amount] || 'Direct contribution pooled for essential emergency flood relief procurement.';
+      hintElement.innerHTML = `<strong>Selected: ₹${amount.toLocaleString('en-IN')}</strong> — ${desc}`;
+    }
+  }
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const amount = parseInt(chip.getAttribute('data-amount'), 10);
+      if (amount) updateSelection(amount, false);
     });
   });
+
+  if (customInput) {
+    customInput.addEventListener('input', (e) => {
+      const val = parseInt(e.target.value, 10);
+      if (val && val > 0) {
+        updateSelection(val, true);
+      } else {
+        updateSelection(500, false);
+      }
+    });
+
+    customInput.addEventListener('focus', () => {
+      chips.forEach(c => {
+        c.classList.remove('is-selected');
+        c.setAttribute('aria-checked', 'false');
+      });
+    });
+  }
 }
 
 // -----------------------------------------------------------------------------
