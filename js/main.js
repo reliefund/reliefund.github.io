@@ -10,8 +10,10 @@
 // 1. Central Configuration
 // -----------------------------------------------------------------------------
 const RELIEF_CONFIG = {
-  // Official Razorpay Hosted Payment Page / Link URL.
-  razorpayHostedUrl: 'https://rzp.io/rzp/reliefund',
+  // Official Razorpay Hosted Payment Page URL.
+  // Using the direct hosted page URL ensures the ?amount= parameter is never stripped by short-link redirects.
+  razorpayHostedUrl: 'https://pages.razorpay.com/reliefund',
+  razorpayShortUrl: 'https://rzp.io/rzp/reliefund',
   
   // Verification details
   initiativeName: 'Relief Fund — Nepal Flood Emergency Initiative',
@@ -22,6 +24,12 @@ const RELIEF_CONFIG = {
   supportsCustomAmounts: true,
   providerName: 'Razorpay'
 };
+
+// Helper to construct official payment URL with pre-filled amount
+function getPaymentUrl(amount) {
+  const amt = amount || currentSelectedAmount || 100;
+  return `${RELIEF_CONFIG.razorpayHostedUrl}?amount=${amt}`;
+}
 
 // -----------------------------------------------------------------------------
 // 2. Initialization on DOMContentLoaded
@@ -143,9 +151,12 @@ function initDonationRouting() {
   }
 
   donateButtons.forEach(btn => {
-    btn.setAttribute('href', RELIEF_CONFIG.razorpayHostedUrl);
+    btn.setAttribute('href', getPaymentUrl(currentSelectedAmount));
     btn.setAttribute('target', '_blank');
     btn.setAttribute('rel', 'noopener noreferrer');
+    btn.addEventListener('click', () => {
+      btn.setAttribute('href', getPaymentUrl(currentSelectedAmount));
+    });
   });
 
   if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
@@ -169,7 +180,7 @@ function initDonationRouting() {
   if (modalConfirmBtn) {
     modalConfirmBtn.addEventListener('click', () => {
       closeModal();
-      window.open(RELIEF_CONFIG.razorpayHostedUrl, '_blank', 'noopener,noreferrer');
+      window.open(getPaymentUrl(currentSelectedAmount), '_blank', 'noopener,noreferrer');
     });
   }
 }
@@ -221,9 +232,16 @@ function initAmountSelector() {
       }
     }
 
+    const payUrl = getPaymentUrl(amount);
+
     if (heroDonateBtn) {
       heroDonateBtn.setAttribute('data-amount', String(amount));
+      heroDonateBtn.setAttribute('href', payUrl);
     }
+
+    document.querySelectorAll('.js-donate-btn').forEach(btn => {
+      btn.setAttribute('href', payUrl);
+    });
 
     if (donateBtnText) {
       donateBtnText.textContent = `Donate for Their Lives (₹${amount.toLocaleString('en-IN')})`;
@@ -256,10 +274,8 @@ function initAmountSelector() {
     });
   }
 
-  // Set default initial state for button text
-  if (donateBtnText) {
-    donateBtnText.textContent = 'Donate for Their Lives (₹100)';
-  }
+  // Set default initial state for button text and target URL
+  updateSelection(100, false);
 }
 
 // -----------------------------------------------------------------------------
