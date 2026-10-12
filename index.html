@@ -7,9 +7,41 @@
   <meta name="theme-color" content="#0b1f2d">
 
   <title>Relief Fund — Nepal Flood Emergency Initiative</title>
+  <link rel="canonical" href="https://pages.razorpay.com/reliefund">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pages.razorpay.com/reliefund">
+  <meta property="og:title" content="Relief Fund — Nepal Flood Emergency Initiative">
+  <meta property="og:description" content="Independent community flood relief initiative providing emergency food, clean water, medical supplies, and temporary shelter to families affected by monsoon flooding in Nepal.">
+  <meta property="og:image" content="assets/images/hero-nepal-flood.webp">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://pages.razorpay.com/reliefund">
+  <meta name="twitter:title" content="Relief Fund — Nepal Flood Emergency Initiative">
+  <meta name="twitter:description" content="Independent community flood relief initiative providing emergency food, clean water, medical supplies, and temporary shelter to families affected by monsoon flooding in Nepal.">
+  <meta name="twitter:image" content="assets/images/hero-nepal-flood.webp">
+
+  <!-- Preload Critical LCP Hero Image -->
+  <link rel="preload" as="image" href="assets/images/hero-nepal-flood.webp" type="image/webp" fetchpriority="high">
 
   <!-- Favicon SVG -->
   <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "Relief Fund",
+    "alternateName": "Nepal Flood Emergency Initiative",
+    "description": "Independent community relief initiative delivering emergency food, clean water, and shelter supplies directly to flood-affected families in Nepal.",
+    "url": "https://pages.razorpay.com/reliefund",
+    "logo": "assets/images/logo.svg",
+    "email": "reliefund90@gmail.com"
+  }
+  </script>
 
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="css/style.css?v=2">
@@ -23,7 +55,7 @@
   <header class="site-header" role="banner">
     <div class="container site-header__inner">
       <!-- Site Identity -->
-      <a href="#hero" class="brand" aria-label="Relief Fund Homepage">
+      <a href="#hero" class="brand" aria-label="Relief Fund — Nepal Flood Initiative 2026">
         <img src="assets/images/logo.svg" alt="Relief Fund Logo" class="brand__logo-img" width="40" height="40">
         <div class="brand__text">
           <span class="brand__title">Relief Fund</span>
@@ -119,7 +151,8 @@
               <div class="custom-amount-panel" id="custom-amount-panel" style="display: none;">
                 <div class="custom-input-group">
                   <span class="custom-input-prefix">₹</span>
-                  <input type="number" class="custom-input-field" id="custom-amount-input" placeholder="Enter amount (e.g. 5000)" min="50" step="50" aria-label="Enter custom donation amount">
+                  <label for="custom-amount-input" class="sr-only">Custom donation amount in Rupees</label>
+                  <input type="number" class="custom-input-field" id="custom-amount-input" placeholder="Enter amount (e.g. 5000)" min="50" step="50">
                 </div>
               </div>
 
@@ -176,13 +209,18 @@
 
         <div class="hero__media">
           <div class="hero__image-wrapper">
-            <img 
-              src="assets/images/hero-nepal-flood.jpg" 
-              alt="Aid workers and local community volunteers staging boxes of emergency relief supplies and rations in a flood-affected Nepal river valley"
-              width="1376" 
-              height="768"
-              loading="eager"
-            >
+            <picture>
+              <source srcset="assets/images/hero-nepal-flood.webp" type="image/webp">
+              <img 
+                src="assets/images/hero-nepal-flood.jpg" 
+                alt="Aid workers and local community volunteers staging boxes of emergency relief supplies and rations in a flood-affected Nepal river valley"
+                width="1200" 
+                height="669"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              >
+            </picture>
           </div>
           <div class="hero__caption">
             <span>Illustrative field staging documentation</span>
@@ -208,13 +246,17 @@
           <article class="priority-card">
             <div class="priority-card__img-container">
               <span class="priority-card__tag">Water</span>
-              <img 
-                src="assets/images/clean-water.jpg" 
-                alt="Safe drinking water distribution and water purification filtration equipment" 
-                loading="lazy"
-                width="1000"
-                height="747"
-              >
+              <picture>
+                <source srcset="assets/images/clean-water.webp" type="image/webp">
+                <img 
+                  src="assets/images/clean-water.jpg" 
+                  alt="Safe drinking water distribution and water purification filtration equipment" 
+                  loading="lazy"
+                  decoding="async"
+                  width="640"
+                  height="478"
+                >
+              </picture>
             </div>
             <div class="priority-card__body">
               <h3 class="priority-card__title">Clean Drinking Water</h3>
@@ -228,13 +270,17 @@
           <article class="priority-card">
             <div class="priority-card__img-container">
               <span class="priority-card__tag">Food</span>
-              <img 
-                src="assets/images/relief-food.jpg" 
-                alt="Emergency food aid supplies including sacks of rice and nutritional packs" 
-                loading="lazy"
-                width="1000"
-                height="747"
-              >
+              <picture>
+                <source srcset="assets/images/relief-food.webp" type="image/webp">
+                <img 
+                  src="assets/images/relief-food.jpg" 
+                  alt="Emergency food aid supplies including sacks of rice and nutritional packs" 
+                  loading="lazy"
+                  decoding="async"
+                  width="640"
+                  height="478"
+                >
+              </picture>
             </div>
             <div class="priority-card__body">
               <h3 class="priority-card__title">Dry Rations & Meals</h3>
@@ -248,13 +294,17 @@
           <article class="priority-card">
             <div class="priority-card__img-container">
               <span class="priority-card__tag">Health</span>
-              <img 
-                src="assets/images/first-aid.jpg" 
-                alt="Medical emergency first aid supplies including antiseptics, bandages, and ORS" 
-                loading="lazy"
-                width="1000"
-                height="747"
-              >
+              <picture>
+                <source srcset="assets/images/first-aid.webp" type="image/webp">
+                <img 
+                  src="assets/images/first-aid.jpg" 
+                  alt="Medical emergency first aid supplies including antiseptics, bandages, and ORS" 
+                  loading="lazy"
+                  decoding="async"
+                  width="640"
+                  height="478"
+                >
+              </picture>
             </div>
             <div class="priority-card__body">
               <h3 class="priority-card__title">First Aid & Medicine</h3>
@@ -268,13 +318,17 @@
           <article class="priority-card">
             <div class="priority-card__img-container">
               <span class="priority-card__tag">Shelter</span>
-              <img 
-                src="assets/images/shelter.jpg" 
-                alt="Heavy-duty waterproof tarpaulins and warm blankets" 
-                loading="lazy"
-                width="1000"
-                height="747"
-              >
+              <picture>
+                <source srcset="assets/images/shelter.webp" type="image/webp">
+                <img 
+                  src="assets/images/shelter.jpg" 
+                  alt="Heavy-duty waterproof tarpaulins and warm blankets" 
+                  loading="lazy"
+                  decoding="async"
+                  width="640"
+                  height="478"
+                >
+              </picture>
             </div>
             <div class="priority-card__body">
               <h3 class="priority-card__title">Shelter & Warmth</h3>

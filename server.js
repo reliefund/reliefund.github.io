@@ -11,27 +11,35 @@ const MIME_TYPES = {
   '.css': 'text/css; charset=utf-8',
   '.js': 'application/javascript; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
+  '.webp': 'image/webp',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
   '.png': 'image/png',
   '.svg': 'image/svg+xml',
+  '.xml': 'application/xml; charset=utf-8',
   '.txt': 'text/plain; charset=utf-8',
   '.ico': 'image/x-icon'
 };
 
 const server = http.createServer((req, res) => {
-  // CORS & Security headers
+  // Security & Best Practice Headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.razorpay.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.razorpay.com; frame-src https://pages.razorpay.com https://rzp.io; object-src 'none'; base-uri 'self';");
 
   let reqPath = decodeURIComponent(req.url.split('?')[0]);
   if (reqPath === '/' || reqPath === '') {
     reqPath = '/index.html';
+  } else if (reqPath === '/favicon.ico') {
+    reqPath = '/assets/images/logo.svg';
   }
 
   const filePath = path.join(ROOT, reqPath);
 
-  // Security: prevent path traversal
+  // Security: prevent directory traversal
   if (!filePath.startsWith(ROOT)) {
     res.statusCode = 403;
     res.end('Forbidden');
@@ -53,9 +61,9 @@ const server = http.createServer((req, res) => {
     res.setHeader('Content-Type', mime);
     res.setHeader('ETag', etag);
 
-    // Cache static assets
-    if (['.jpg', '.jpeg', '.png', '.svg', '.css', '.js'].includes(ext)) {
-      res.setHeader('Cache-Control', 'public, max-age=86400');
+    // Efficient Cache Lifetimes
+    if (['.jpg', '.jpeg', '.png', '.webp', '.svg', '.css', '.js'].includes(ext)) {
+      res.setHeader('Cache-Control', 'public, max-age=604800, stale-while-revalidate=86400');
     } else {
       res.setHeader('Cache-Control', 'public, max-age=60');
     }
@@ -74,7 +82,7 @@ const server = http.createServer((req, res) => {
     }
 
     const acceptEncoding = req.headers['accept-encoding'] || '';
-    const shouldGzip = ['.html', '.css', '.js', '.json', '.txt', '.svg'].includes(ext);
+    const shouldGzip = ['.html', '.css', '.js', '.json', '.txt', '.svg', '.xml'].includes(ext);
 
     if (shouldGzip && acceptEncoding.includes('gzip')) {
       res.setHeader('Content-Encoding', 'gzip');

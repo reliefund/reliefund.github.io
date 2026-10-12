@@ -15,9 +15,9 @@
   --color-teal-light: #1e6b80;
   --color-teal-soft: #eaf3f5;
   
-  /* Restrained Amber Accent for Donations */
-  --color-accent: #c25e00;
-  --color-accent-hover: #9c4a00;
+  /* Restrained Amber Accent for Donations (Meets WCAG AA 4.5:1 Contrast) */
+  --color-accent: #b45309;
+  --color-accent-hover: #92400e;
   --color-accent-soft: #fef3c7;
   --color-accent-border: #fcd34d;
 
@@ -1638,7 +1638,7 @@ a:hover {
   justify-content: space-between;
   padding: 1rem 0;
   font-size: 0.8125rem;
-  color: #64748b;
+  color: #94a3b8;
   text-align: center;
 }
 
@@ -1650,11 +1650,44 @@ a:hover {
 }
 
 .footer-simple__bottom a {
-  color: #94a3b8;
+  color: #cbd5e1;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .footer-simple__bottom a:hover {
   color: #ffffff;
+}
+
+/* Responsive Enhancements for Small Viewports (320px - 380px) */
+@media (max-width: 380px) {
+  .donation-card__grid {
+    gap: 0.375rem;
+  }
+
+  .amount-btn {
+    font-size: 0.875rem;
+    padding: 0.625rem 0.25rem;
+    min-height: 44px;
+  }
+
+  .donation-card__highlight-bar {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .hero__title {
+    font-size: 1.625rem;
+  }
+
+  .brand__title {
+    font-size: 1.1rem;
+  }
+
+  .brand__logo-img {
+    width: 2rem;
+    height: 2rem;
+  }
 }
 
 /* Compact Priorities Grid */
