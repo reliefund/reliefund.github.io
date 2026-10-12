@@ -65,8 +65,8 @@ In `js/main.js`, locate the `RELIEF_CONFIG` constant at line 14:
 
 ```javascript
 const RELIEF_CONFIG = {
-  // Replace with your verified Razorpay Payment Page or Link:
-  razorpayHostedUrl: 'https://pages.razorpay.com/your-actual-page-slug',
+  // Verified Razorpay Payment Link:
+  razorpayHostedUrl: 'https://rzp.io/rzp/reliefund',
   ...
 };
 ```

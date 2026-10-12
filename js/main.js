@@ -11,8 +11,7 @@
 // -----------------------------------------------------------------------------
 const RELIEF_CONFIG = {
   // Official Razorpay Hosted Payment Page / Link URL.
-  // Replace with your verified production URL (e.g., https://pages.razorpay.com/nepalrelief2024 or https://rzp.io/l/...)
-  razorpayHostedUrl: 'https://pages.razorpay.com/sample-nepal-flood-relief',
+  razorpayHostedUrl: 'https://rzp.io/rzp/reliefund',
   
   // Verification details
   initiativeName: 'Relief Fund — Nepal Flood Emergency Initiative',
