@@ -189,46 +189,76 @@ function initDonationRouting() {
   }
 }
 
+// Current selected amount state
+let currentSelectedAmount = 100;
+
+const AMOUNT_IMPACTS = {
+  100: 'Supplies clean drinking water sachets and ORS hydration packets for flood-affected families.',
+  250: 'Provides emergency high-energy biscuits, dry rations, and basic hygiene soap.',
+  500: 'Supplies water purification tablets & emergency hydration sachets for an affected family.',
+  1000: 'Procures 10kg rice, lentils, salt, cooking oil, and nutritious dry rations for a family.',
+  2500: 'Provides emergency food pack, waterproof shelter tarpaulin, and warm wool blankets.'
+};
+
 // -----------------------------------------------------------------------------
-// 6. Interactive Amount Selector
+// 6. Interactive Amount Selector (Matches Reference UI Card)
 // -----------------------------------------------------------------------------
 function initAmountSelector() {
-  const chips = document.querySelectorAll('.amount-chip');
+  const amountButtons = document.querySelectorAll('.amount-btn');
+  const customBtn = document.getElementById('custom-amount-btn');
+  const customPanel = document.getElementById('custom-amount-panel');
   const customInput = document.getElementById('custom-amount-input');
   const hintElement = document.getElementById('amount-impact-hint');
   const heroDonateBtn = document.getElementById('hero-donate-btn');
+  const donateBtnText = document.getElementById('donate-btn-text');
 
   function updateSelection(amount, isCustom = false) {
     currentSelectedAmount = amount;
 
-    chips.forEach(chip => {
-      const chipVal = parseInt(chip.getAttribute('data-amount'), 10);
-      const isSelected = !isCustom && chipVal === amount;
-      chip.classList.toggle('is-selected', isSelected);
-      chip.setAttribute('aria-checked', String(isSelected));
+    amountButtons.forEach(btn => {
+      const btnVal = btn.getAttribute('data-amount') ? parseInt(btn.getAttribute('data-amount'), 10) : null;
+      let isSelected = false;
+
+      if (isCustom) {
+        isSelected = btn.id === 'custom-amount-btn';
+      } else {
+        isSelected = btnVal === amount;
+      }
+
+      btn.classList.toggle('is-selected', isSelected);
+      btn.setAttribute('aria-checked', String(isSelected));
     });
 
-    if (!isCustom && customInput) {
-      customInput.value = '';
-      customInput.classList.remove('is-active');
-    } else if (isCustom && customInput) {
-      customInput.classList.add('is-active');
+    if (customPanel) {
+      customPanel.style.display = isCustom ? 'block' : 'none';
+      if (isCustom && customInput) {
+        customInput.focus();
+      }
     }
 
     if (heroDonateBtn) {
       heroDonateBtn.setAttribute('data-amount', String(amount));
     }
 
+    if (donateBtnText) {
+      donateBtnText.textContent = `Donate for Their Lives (₹${amount.toLocaleString('en-IN')})`;
+    }
+
     if (hintElement) {
-      const desc = AMOUNT_IMPACTS[amount] || 'Direct contribution pooled for essential emergency flood relief procurement.';
+      const desc = AMOUNT_IMPACTS[amount] || 'Direct community relief contribution pooled for essential emergency food, water, and shelter.';
       hintElement.innerHTML = `<strong>Selected: ₹${amount.toLocaleString('en-IN')}</strong> — ${desc}`;
     }
   }
 
-  chips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      const amount = parseInt(chip.getAttribute('data-amount'), 10);
-      if (amount) updateSelection(amount, false);
+  amountButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.id === 'custom-amount-btn') {
+        const existingVal = customInput && customInput.value ? parseInt(customInput.value, 10) : 5000;
+        updateSelection(existingVal, true);
+      } else {
+        const amount = parseInt(btn.getAttribute('data-amount'), 10);
+        if (amount) updateSelection(amount, false);
+      }
     });
   });
 
@@ -237,17 +267,13 @@ function initAmountSelector() {
       const val = parseInt(e.target.value, 10);
       if (val && val > 0) {
         updateSelection(val, true);
-      } else {
-        updateSelection(500, false);
       }
     });
+  }
 
-    customInput.addEventListener('focus', () => {
-      chips.forEach(c => {
-        c.classList.remove('is-selected');
-        c.setAttribute('aria-checked', 'false');
-      });
-    });
+  // Set default initial state for button text
+  if (donateBtnText) {
+    donateBtnText.textContent = 'Donate for Their Lives (₹100)';
   }
 }
 
