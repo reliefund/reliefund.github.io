@@ -17,12 +17,10 @@ const RELIEF_CONFIG = {
   
   // Verification details & Transparency
   initiativeName: 'Relief Fund — Nepal Flood Emergency Initiative',
-  organizerName: 'Arun Ghosh & Nepal Volunteer Coordination Network',
-  organizerPhone: '+91 76348 56123',
+  organizerName: 'Nepal Volunteer Coordination Network',
   merchantAccountName: 'A GHOSH FUNDS',
   merchantLocation: 'Ranaghat, West Bengal, India',
   contactEmail: 'reliefund90@gmail.com',
-  whatsappUrl: 'https://wa.me/917634856123?text=Namaste%2C%20I%20have%20a%20question%20about%20the%20Nepal%20Flood%20Relief%20Fund',
   
   // Payment behavior
   supportsCustomAmounts: true,
