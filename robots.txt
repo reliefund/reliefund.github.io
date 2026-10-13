@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pages.razorpay.com/reliefund/sitemap.xml
+Sitemap: https://reliefund.online/sitemap.xml
