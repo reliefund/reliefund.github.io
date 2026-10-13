@@ -76,7 +76,7 @@
 
       <!-- Header Actions -->
       <div class="header-actions">
-        <a href="https://pages.razorpay.com/reliefund?amount=100" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm js-donate-btn" aria-label="Donate now on Razorpay">
+        <a href="https://pages.razorpay.com/reliefund?amount=100" class="btn btn--primary btn--sm js-donate-btn" aria-label="Donate now on Razorpay">
           Donate Now
         </a>
         <!-- Mobile Toggle Button -->
@@ -102,7 +102,7 @@
         <li><a href="#contact">Direct Contact & Verification</a></li>
       </ul>
       <div class="mobile-nav__cta">
-        <a href="https://pages.razorpay.com/reliefund?amount=100" target="_blank" rel="noopener noreferrer" class="btn btn--primary js-donate-btn">
+        <a href="https://pages.razorpay.com/reliefund?amount=100" class="btn btn--primary js-donate-btn">
           Donate Now via Razorpay
         </a>
       </div>
@@ -137,13 +137,13 @@
                 <span class="donation-card__badge">Direct Razorpay Transfer</span>
               </div>
 
-              <!-- 3x2 Amount Buttons Grid -->
+              <!-- 3x2 Amount Buttons Grid (Starting at ₹50 for low-barrier mobile giving) -->
               <div class="donation-card__grid" role="radiogroup" aria-label="Choose donation amount in Rupees">
+                <button type="button" class="amount-btn" data-amount="50" role="radio" aria-checked="false">₹50</button>
                 <button type="button" class="amount-btn is-selected" data-amount="100" role="radio" aria-checked="true">₹100</button>
                 <button type="button" class="amount-btn" data-amount="250" role="radio" aria-checked="false">₹250</button>
                 <button type="button" class="amount-btn" data-amount="500" role="radio" aria-checked="false">₹500</button>
                 <button type="button" class="amount-btn" data-amount="1000" role="radio" aria-checked="false">₹1,000</button>
-                <button type="button" class="amount-btn" data-amount="2500" role="radio" aria-checked="false">₹2,500</button>
                 <button type="button" class="amount-btn" id="custom-amount-btn" role="radio" aria-checked="false">Custom</button>
               </div>
 
@@ -161,18 +161,37 @@
                 <strong>Selected: ₹100</strong> — Supplies clean drinking water sachets and ORS hydration packets for flood-affected families.
               </p>
 
+              <!-- Merchant Account Transparency Notice (Pre-frames Razorpay Account) -->
+              <div class="donation-card__merchant-note">
+                <div class="merchant-badge">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Official Gateway: <strong>Razorpay</strong> (Merchant Account: <strong>A GHOSH FUNDS</strong>)</span>
+                </div>
+                <p class="merchant-explanation">
+                  Coordinated by Arun Ghosh. 100% net contributions deployed directly to field procurement & distribution in Nepal.
+                </p>
+              </div>
+
               <!-- Card Actions -->
               <div class="donation-card__actions">
-                <a href="https://pages.razorpay.com/reliefund?amount=100" target="_blank" rel="noopener noreferrer" class="btn btn--donate-main js-donate-btn" id="hero-donate-btn" data-amount="100">
-                  <span id="donate-btn-text">Donate for Their Lives (₹100)</span>
+                <button type="button" class="btn btn--donate-main js-donate-btn" id="hero-donate-btn" data-amount="100" aria-label="Donate ₹100 via Razorpay">
+                  <span id="donate-btn-text">Donate ₹100 via Razorpay (UPI / GPay / Cards)</span>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
                     <polyline points="7 7 17 7 17 17"></polyline>
                   </svg>
+                </button>
+
+                <!-- Direct WhatsApp Verification Link -->
+                <a href="https://wa.me/917634856123?text=Namaste%2C%20I%20have%20a%20question%20about%20the%20Nepal%20Flood%20Relief%20Fund" target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp-inline" aria-label="Chat with organizer Arun Ghosh on WhatsApp">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.41 1.56 1.56 2.41 3.63 2.41 5.83s-.85 4.26-2.41 5.82c-1.55 1.56-3.62 2.41-5.82 2.41-1.5 0-2.97-.39-4.27-1.13l-.3-.17-3.17.83.85-3.09-.2-.31a8.16 8.16 0 0 1-1.28-4.36c0-4.52 3.68-8.21 8.2-8.21zm4.51 11.63c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.07-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.03 2.61c.13.17 1.78 2.71 4.3 3.8 2.52 1.09 2.52.73 2.98.69.45-.04 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29z"/>
+                  </svg>
+                  <span>Chat with Organizer Arun Ghosh on WhatsApp (+91 76348 56123)</span>
                 </a>
 
-                <a href="#how-donations-help" class="btn btn--mission">
-                  Understand the Mission
+                <a href="#transparency" class="btn btn--mission">
+                  How Funds Are Deployed &amp; Verified &darr;
                 </a>
               </div>
 
@@ -183,7 +202,7 @@
                   <line x1="12" y1="16" x2="12" y2="12"></line>
                   <line x1="12" y1="8" x2="12.01" y2="8"></line>
                 </svg>
-                <span>Contributions are processed directly on Razorpay's secure payment page. No payment details are collected or stored on this website.</span>
+                <span>Instant Razorpay Email Receipt &bull; 100% Secure 256-Bit Encryption &bull; Works with Google Pay, PhonePe, Paytm, BHIM &amp; UPI</span>
               </div>
             </div>
           </div>
@@ -442,8 +461,10 @@
 
         <!-- Inline Compact Contact Bar -->
         <div class="contact-compact-bar" id="contact">
-          <span><strong>Organizer Inquiries & Verification:</strong></span>
+          <span><strong>Organizer Inquiries &amp; Verification:</strong> Arun Ghosh &bull; </span>
           <div class="contact-compact-links">
+            <a href="https://wa.me/917634856123?text=Namaste%2C%20I%20have%20a%20question%20about%20the%20Nepal%20Flood%20Relief%20Fund" target="_blank" rel="noopener noreferrer" style="color:#16a34a; font-weight:600;">WhatsApp: +91 76348 56123</a>
+            <span>&bull;</span>
             <a href="mailto:reliefund90@gmail.com">reliefund90@gmail.com</a>
           </div>
         </div>
@@ -459,6 +480,26 @@
         </div>
 
         <div class="faq-list" role="region" aria-label="FAQ Accordion">
+          <div class="faq-item">
+            <button type="button" class="faq-question-btn js-faq-toggle" aria-expanded="false" aria-controls="faq-ans-merchant" id="faq-btn-merchant">
+              <span>Why does the payment page and receipt show "A GHOSH FUNDS"?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-ans-merchant" role="region" aria-labelledby="faq-btn-merchant">
+              <p>This community relief drive is an independent citizen response coordinated by Arun Ghosh. Contributions are collected through our official verified Razorpay merchant gateway account registered under <strong>A GHOSH FUNDS</strong> (Ranaghat, West Bengal). Using our direct merchant gateway eliminates third-party platform cuts so 100% of net funds are deployed directly for emergency grains, water purification, and shelter kits in Nepal. Razorpay sends an official receipt directly to your email.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question-btn js-faq-toggle" aria-expanded="false" aria-controls="faq-ans-mobile" id="faq-btn-mobile">
+              <span>How do I pay from my smartphone (Google Pay / PhonePe / Paytm)?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-ans-mobile" role="region" aria-labelledby="faq-btn-mobile">
+              <p>When you click "Donate", Razorpay opens securely on your phone. Simply choose Google Pay, PhonePe, Paytm, or BHIM to approve the payment in 1 tap without scanning any QR code. If a QR code is displayed, select "UPI App" on screen, or screenshot the code and choose "Scan from Gallery" in your UPI app.</p>
+            </div>
+          </div>
+
           <div class="faq-item">
             <button type="button" class="faq-question-btn js-faq-toggle" aria-expanded="false" aria-controls="faq-ans-1" id="faq-btn-1">
               <span>Is this an official NGO or government relief program?</span>
@@ -504,12 +545,12 @@
 
   </main>
 
-  <!-- PRE-PAYMENT DISCLOSURE MODAL DIALOG -->
+  <!-- TRANSPARENT PRE-PAYMENT DISCLOSURE MODAL DIALOG -->
   <div class="modal-backdrop" id="payment-modal" role="dialog" aria-modal="true" aria-labelledby="modal-dialog-title" aria-hidden="true">
     <div class="modal-box">
       <div class="modal-header">
         <h3 class="modal-title" id="modal-dialog-title">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c25e00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#144e3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
             <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
           </svg>
@@ -521,32 +562,60 @@
       </div>
 
       <div class="modal-body">
-        <p>
-          You are about to be redirected to our official encrypted Razorpay payment page to support flood-affected families.
+        <p style="margin-bottom: 0.75rem;">
+          You are proceeding to official encrypted checkout to support flood-affected families in Nepal.
         </p>
-        <div class="modal-amount-highlight" id="modal-amount-display" style="background:#fef3c7; border:1px solid #fcd34d; border-radius:6px; padding:0.625rem 0.875rem; margin:0.875rem 0; font-weight:600; color:#92400e;">
-          Selected Amount: <span id="modal-amount-value" style="font-size:1.15rem; color:#b45309; font-weight:800;">₹100</span>
+
+        <div class="modal-amount-highlight" id="modal-amount-display">
+          <span>Contribution Amount:</span>
+          <span id="modal-amount-value">₹100</span>
         </div>
-        <div class="modal-info-box">
-          <strong>Security Notice:</strong>
-          <ul style="margin: 0.5rem 0 0 1.25rem; line-height: 1.5;">
-            <li>All transactions are processed by Razorpay (PCI-DSS Level 1 certified).</li>
-            <li>No card details, CVVs, or UPI PINs are ever entered on or seen by this website.</li>
-            <li>Razorpay issues a verified electronic payment confirmation directly to your email.</li>
-          </ul>
+
+        <!-- Critical Merchant Transparency Clarification -->
+        <div class="modal-merchant-card">
+          <div class="modal-merchant-card__header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <strong>Official Merchant Account: A GHOSH FUNDS</strong>
+          </div>
+          <p class="modal-merchant-card__text">
+            <strong>Why does Razorpay show "A GHOSH FUNDS"?</strong><br>
+            This citizen relief initiative is organized by <strong>Arun Ghosh</strong> &amp; ground volunteers. As an independent emergency response, funds route through our verified Razorpay merchant gateway (Ranaghat, WB). 100% of collected funds are transferred directly for flood relief supplies in Nepal.
+          </p>
         </div>
-        <p style="font-size: 0.8125rem; color: #64748b; word-break: break-all;">
-          <strong>Official destination:</strong><br>
-          <span id="modal-target-url" style="font-family: monospace;">https://pages.razorpay.com/reliefund</span>
-        </p>
+
+        <!-- Critical Mobile Payment Instructions (Fixes the QR confusion!) -->
+        <div class="modal-mobile-guide">
+          <div class="modal-mobile-guide__item">
+            <span class="guide-icon" aria-hidden="true">📱</span>
+            <div>
+              <strong>Paying from your phone?</strong>
+              <p>On the next screen, tap your UPI app (Google Pay, PhonePe, Paytm, or BHIM) to approve payment instantly in 1 tap.</p>
+            </div>
+          </div>
+          <div class="modal-mobile-guide__item">
+            <span class="guide-icon" aria-hidden="true">💡</span>
+            <div>
+              <strong>If a QR code appears on screen:</strong>
+              <p>You do not need a second device! Simply select "UPI App" on screen, or take a screenshot of the QR code and choose "Scan from Gallery" inside Google Pay / PhonePe.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-security-points">
+          <span>🔒 256-Bit PCI-DSS Level 1 Encryption</span>
+          <span>📧 Instant Email Receipt from Razorpay</span>
+        </div>
       </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn--secondary btn--sm" id="modal-cancel-btn">
-          Cancel
+          Back
         </button>
         <button type="button" class="btn btn--primary btn--sm" id="modal-confirm-btn">
-          Proceed to Razorpay
+          Proceed to Pay Securely &rarr;
         </button>
       </div>
     </div>
@@ -586,6 +655,14 @@
       </div>
     </aside>
   </footer>
+
+  <!-- Floating WhatsApp Verification Button for Mobile & Desktop -->
+  <a href="https://wa.me/917634856123?text=Namaste%2C%20I%20have%20a%20question%20about%20the%20Nepal%20Flood%20Relief%20Fund" target="_blank" rel="noopener noreferrer" class="floating-whatsapp-btn" aria-label="Chat with Organizer Arun Ghosh on WhatsApp">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.41 1.56 1.56 2.41 3.63 2.41 5.83s-.85 4.26-2.41 5.82c-1.55 1.56-3.62 2.41-5.82 2.41-1.5 0-2.97-.39-4.27-1.13l-.3-.17-3.17.83.85-3.09-.2-.31a8.16 8.16 0 0 1-1.28-4.36c0-4.52 3.68-8.21 8.2-8.21zm4.51 11.63c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.07-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.03 2.61c.13.17 1.78 2.71 4.3 3.8 2.52 1.09 2.52.73 2.98.69.45-.04 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29z"/>
+    </svg>
+    <span>WhatsApp Helpline (+91 76348 56123)</span>
+  </a>
 
   <!-- Main JavaScript Bundle -->
   <script src="js/main.js?v=2"></script>

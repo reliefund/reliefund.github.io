@@ -11,14 +11,18 @@
 // -----------------------------------------------------------------------------
 const RELIEF_CONFIG = {
   // Official Razorpay Hosted Payment Page URL.
-  // Using the direct hosted page URL ensures the ?amount= parameter is never stripped by short-link redirects.
+  // Using direct hosted page URL ensures the ?amount= parameter is pre-filled.
   razorpayHostedUrl: 'https://pages.razorpay.com/reliefund',
   razorpayShortUrl: 'https://rzp.io/rzp/reliefund',
   
-  // Verification details
+  // Verification details & Transparency
   initiativeName: 'Relief Fund — Nepal Flood Emergency Initiative',
-  organizerName: '[TODO: Organizer / Coordination Team Name]',
+  organizerName: 'Arun Ghosh & Nepal Volunteer Coordination Network',
+  organizerPhone: '+91 76348 56123',
+  merchantAccountName: 'A GHOSH FUNDS',
+  merchantLocation: 'Ranaghat, West Bengal, India',
   contactEmail: 'reliefund90@gmail.com',
+  whatsappUrl: 'https://wa.me/917634856123?text=Namaste%2C%20I%20have%20a%20question%20about%20the%20Nepal%20Flood%20Relief%20Fund',
   
   // Payment behavior
   supportsCustomAmounts: true,
@@ -125,8 +129,8 @@ function initDonationRouting() {
 
   function openModal(preferredAmount) {
     if (!modal) {
-      // Fallback: direct window open if modal is absent
-      window.open(RELIEF_CONFIG.razorpayHostedUrl, '_blank', 'noopener,noreferrer');
+      // Fallback: direct in-place navigation if modal is absent
+      window.location.href = getPaymentUrl(preferredAmount || currentSelectedAmount);
       return;
     }
 
@@ -152,10 +156,11 @@ function initDonationRouting() {
 
   donateButtons.forEach(btn => {
     btn.setAttribute('href', getPaymentUrl(currentSelectedAmount));
-    btn.setAttribute('target', '_blank');
-    btn.setAttribute('rel', 'noopener noreferrer');
-    btn.addEventListener('click', () => {
-      btn.setAttribute('href', getPaymentUrl(currentSelectedAmount));
+    // In-place click handler opens the transparent pre-payment modal:
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const btnAmt = btn.getAttribute('data-amount') ? parseInt(btn.getAttribute('data-amount'), 10) : currentSelectedAmount;
+      openModal(btnAmt || currentSelectedAmount);
     });
   });
 
@@ -176,11 +181,12 @@ function initDonationRouting() {
     }
   });
 
-  // Confirm redirect button
+  // Confirm redirect button:
+  // Using window.location.href preserves UPI app intent deep linking in mobile webviews (Instagram, Chrome, Safari)
   if (modalConfirmBtn) {
     modalConfirmBtn.addEventListener('click', () => {
       closeModal();
-      window.open(getPaymentUrl(currentSelectedAmount), '_blank', 'noopener,noreferrer');
+      window.location.href = getPaymentUrl(currentSelectedAmount);
     });
   }
 }
@@ -189,10 +195,11 @@ function initDonationRouting() {
 let currentSelectedAmount = 100;
 
 const AMOUNT_IMPACTS = {
-  100: 'Supplies clean drinking water sachets and ORS hydration packets for flood-affected families.',
+  50: 'Supplies clean drinking water sachets and emergency ORS hydration packets for flood victims.',
+  100: 'Supplies chlorine water purification tablets & emergency hydration sachets for an affected family.',
   250: 'Provides emergency high-energy biscuits, dry rations, and basic hygiene soap.',
-  500: 'Supplies water purification tablets & emergency hydration sachets for an affected family.',
-  1000: 'Procures 10kg rice, lentils, salt, cooking oil, and nutritious dry rations for a family.',
+  500: 'Provides essential family survival grain pack (rice, lentils, cooking oil, and salt).',
+  1000: 'Procures 10kg staple grain kit, nutrition packs & medical first-aid supplies.',
   2500: 'Provides emergency food pack, waterproof shelter tarpaulin, and warm wool blankets.'
 };
 
@@ -244,7 +251,7 @@ function initAmountSelector() {
     });
 
     if (donateBtnText) {
-      donateBtnText.textContent = `Donate for Their Lives (₹${amount.toLocaleString('en-IN')})`;
+      donateBtnText.textContent = `Donate ₹${amount.toLocaleString('en-IN')} via Razorpay (UPI / GPay / Cards)`;
     }
 
     if (hintElement) {

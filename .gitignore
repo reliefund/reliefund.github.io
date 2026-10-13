@@ -1,1 +1,4 @@
 cloudflared.exe
+
+# Local Netlify folder
+.netlify
