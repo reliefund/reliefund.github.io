@@ -113,21 +113,16 @@ function initFaqAccordion() {
 // 5. Razorpay Donation Routing & Pre-Payment Modal
 // -----------------------------------------------------------------------------
 function initDonationRouting() {
+  const heroDonateBtn = document.getElementById('hero-donate-btn');
   const donateButtons = document.querySelectorAll('.js-donate-btn');
   const modal = document.getElementById('payment-modal');
   const modalCloseBtn = document.getElementById('modal-close-btn');
-  const modalCancelBtn = document.getElementById('modal-cancel-btn');
   const modalConfirmBtn = document.getElementById('modal-confirm-btn');
-  const modalTargetUrlText = document.getElementById('modal-target-url');
   const modalAmountVal = document.getElementById('modal-amount-value');
-
-  if (modalTargetUrlText) {
-    modalTargetUrlText.textContent = RELIEF_CONFIG.razorpayHostedUrl;
-  }
+  const modalPayBtnText = document.getElementById('modal-pay-btn-text');
 
   function openModal(preferredAmount) {
     if (!modal) {
-      // Fallback: direct in-place navigation if modal is absent
       window.location.href = getPaymentUrl(preferredAmount || currentSelectedAmount);
       return;
     }
@@ -136,12 +131,14 @@ function initDonationRouting() {
     if (modalAmountVal && amountNum) {
       modalAmountVal.textContent = `₹${amountNum.toLocaleString('en-IN')}`;
     }
+    if (modalPayBtnText && amountNum) {
+      modalPayBtnText.textContent = `Proceed to Pay ₹${amountNum.toLocaleString('en-IN')} via Razorpay →`;
+    }
 
     modal.classList.add('is-active');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
 
-    // Focus confirm button
     if (modalConfirmBtn) modalConfirmBtn.focus();
   }
 
@@ -152,35 +149,44 @@ function initDonationRouting() {
     document.body.style.overflow = '';
   }
 
+  // 1. Primary Hero Donate Button: DIRECT 1-TAP PAYMENT (Frictionless & Seamless)
+  if (heroDonateBtn) {
+    heroDonateBtn.setAttribute('href', getPaymentUrl(currentSelectedAmount));
+    heroDonateBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = getPaymentUrl(currentSelectedAmount);
+    });
+  }
+
+  // 2. Navigation & Drawer Buttons: Scroll smoothly to the donation amount selection card
   donateButtons.forEach(btn => {
-    btn.setAttribute('href', getPaymentUrl(currentSelectedAmount));
-    // In-place click handler opens the transparent pre-payment modal:
+    if (btn === heroDonateBtn) return;
+    btn.setAttribute('href', '#donation-card');
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const btnAmt = btn.getAttribute('data-amount') ? parseInt(btn.getAttribute('data-amount'), 10) : currentSelectedAmount;
-      openModal(btnAmt || currentSelectedAmount);
+      const card = document.getElementById('donation-card');
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.location.href = getPaymentUrl(currentSelectedAmount);
+      }
     });
   });
 
   if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
-  if (modalCancelBtn) modalCancelBtn.addEventListener('click', closeModal);
 
-  // Close when clicking modal backdrop outside box
   if (modal) {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closeModal();
     });
   }
 
-  // Escape key closes modal
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal && modal.classList.contains('is-active')) {
       closeModal();
     }
   });
 
-  // Confirm redirect button:
-  // Using window.location.href preserves UPI app intent deep linking in mobile webviews (Instagram, Chrome, Safari)
   if (modalConfirmBtn) {
     modalConfirmBtn.addEventListener('click', () => {
       closeModal();
@@ -249,7 +255,12 @@ function initAmountSelector() {
     });
 
     if (donateBtnText) {
-      donateBtnText.textContent = `Donate ₹${amount.toLocaleString('en-IN')} via Razorpay (UPI / GPay / Cards)`;
+      donateBtnText.textContent = `Pay ₹${amount.toLocaleString('en-IN')} via Razorpay (UPI / GPay / Cards) →`;
+    }
+
+    const modalPayBtnText = document.getElementById('modal-pay-btn-text');
+    if (modalPayBtnText) {
+      modalPayBtnText.textContent = `Proceed to Pay ₹${amount.toLocaleString('en-IN')} via Razorpay →`;
     }
 
     if (hintElement) {

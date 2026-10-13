@@ -174,8 +174,8 @@
 
               <!-- Card Actions -->
               <div class="donation-card__actions">
-                <button type="button" class="btn btn--donate-main js-donate-btn" id="hero-donate-btn" data-amount="100" aria-label="Donate ₹100 via Razorpay">
-                  <span id="donate-btn-text">Donate ₹100 via Razorpay (UPI / GPay / Cards)</span>
+                <button type="button" class="btn btn--donate-main js-donate-btn" id="hero-donate-btn" data-amount="100" aria-label="Pay ₹100 via Razorpay">
+                  <span id="donate-btn-text">Pay ₹100 via Razorpay (UPI / GPay / Cards) &rarr;</span>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
                     <polyline points="7 7 17 7 17 17"></polyline>
@@ -535,78 +535,38 @@
 
   </main>
 
-  <!-- TRANSPARENT PRE-PAYMENT DISCLOSURE MODAL DIALOG -->
+  <!-- ULTRA-MINIMAL SEAMLESS CHECKOUT MODAL -->
   <div class="modal-backdrop" id="payment-modal" role="dialog" aria-modal="true" aria-labelledby="modal-dialog-title" aria-hidden="true">
-    <div class="modal-box">
+    <div class="modal-box modal-box--compact">
       <div class="modal-header">
         <h3 class="modal-title" id="modal-dialog-title">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#144e3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#144e3a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
             <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
           </svg>
-          Secure Razorpay Checkout
+          Secure Checkout
         </h3>
         <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close dialog">
           &times;
         </button>
       </div>
 
-      <div class="modal-body">
-        <p style="margin-bottom: 0.75rem;">
-          You are proceeding to official encrypted checkout to support flood-affected families in Nepal.
-        </p>
-
+      <div class="modal-body modal-body--compact">
         <div class="modal-amount-highlight" id="modal-amount-display">
           <span>Contribution Amount:</span>
           <span id="modal-amount-value">₹100</span>
         </div>
 
-        <!-- Critical Merchant Transparency Clarification -->
-        <div class="modal-merchant-card">
-          <div class="modal-merchant-card__header">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <polyline points="22 4 12 14.01 9 11.01"></polyline>
-            </svg>
-            <strong>Official Merchant Account: A GHOSH FUNDS</strong>
-          </div>
-          <p class="modal-merchant-card__text">
-            <strong>Why does Razorpay show "A GHOSH FUNDS"?</strong><br>
-            This citizen relief initiative is organized by independent ground volunteers. As a direct emergency response, funds route through our verified Razorpay merchant gateway (Ranaghat, WB). 100% of collected funds are transferred directly for flood relief supplies in Nepal.
-          </p>
-        </div>
-
-        <!-- Critical Mobile Payment Instructions (Fixes the QR confusion!) -->
-        <div class="modal-mobile-guide">
-          <div class="modal-mobile-guide__item">
-            <span class="guide-icon" aria-hidden="true">📱</span>
-            <div>
-              <strong>Paying from your phone?</strong>
-              <p>On the next screen, tap your UPI app (Google Pay, PhonePe, Paytm, or BHIM) to approve payment instantly in 1 tap.</p>
-            </div>
-          </div>
-          <div class="modal-mobile-guide__item">
-            <span class="guide-icon" aria-hidden="true">💡</span>
-            <div>
-              <strong>If a QR code appears on screen:</strong>
-              <p>You do not need a second device! Simply select "UPI App" on screen, or take a screenshot of the QR code and choose "Scan from Gallery" inside Google Pay / PhonePe.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal-security-points">
-          <span>🔒 256-Bit PCI-DSS Level 1 Encryption</span>
-          <span>📧 Instant Email Receipt from Razorpay</span>
-        </div>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn--secondary btn--sm" id="modal-cancel-btn">
-          Back
+        <!-- PRIMARY PAY BUTTON: FRONT & CENTER AT THE TOP (NO SCROLLING NEEDED) -->
+        <button type="button" class="btn btn--donate-main btn--modal-pay" id="modal-confirm-btn">
+          <span id="modal-pay-btn-text">Proceed to Pay ₹100 via Razorpay &rarr;</span>
         </button>
-        <button type="button" class="btn btn--primary btn--sm" id="modal-confirm-btn">
-          Proceed to Pay Securely &rarr;
-        </button>
+
+        <!-- Compact Trust Line -->
+        <div class="modal-compact-trust">
+          <span>🔒 256-Bit SSL Encrypted &bull; Razorpay Gateway (Merchant: <strong>A GHOSH FUNDS</strong>)</span>
+          <span>📱 Google Pay &bull; PhonePe &bull; Paytm &bull; UPI &bull; Cards &bull; Instant Email Receipt</span>
+        </div>
       </div>
     </div>
   </div>
