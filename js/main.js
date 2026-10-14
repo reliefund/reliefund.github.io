@@ -51,24 +51,63 @@ document.addEventListener('DOMContentLoaded', () => {
 function initMobileNavigation() {
   const menuToggle = document.getElementById('menu-toggle');
   const mobileNav = document.getElementById('mobile-nav');
+  const mobileNavClose = document.getElementById('mobile-nav-close');
+  const mobileNavBackdrop = document.getElementById('mobile-nav-backdrop');
+
   if (!menuToggle || !mobileNav) return;
 
   function toggleMenu(open) {
     const isOpen = open !== undefined ? open : !mobileNav.classList.contains('is-open');
     mobileNav.classList.toggle('is-open', isOpen);
+    menuToggle.classList.toggle('is-active', isOpen);
     menuToggle.setAttribute('aria-expanded', String(isOpen));
     menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
-    
+    mobileNav.setAttribute('aria-hidden', String(!isOpen));
+
+    if (mobileNavBackdrop) {
+      mobileNavBackdrop.classList.toggle('is-active', isOpen);
+    }
+
     // Prevent background scrolling while open
     document.body.style.overflow = isOpen ? 'hidden' : '';
+    document.documentElement.style.overflow = isOpen ? 'hidden' : '';
   }
 
-  menuToggle.addEventListener('click', () => toggleMenu());
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
 
-  // Close when clicking any nav link
+  if (mobileNavClose) {
+    mobileNavClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu(false);
+    });
+  }
+
+  if (mobileNavBackdrop) {
+    mobileNavBackdrop.addEventListener('click', () => toggleMenu(false));
+  }
+
+  // Close when clicking any nav link & smooth scroll with safe timeout
   const navLinks = mobileNav.querySelectorAll('a');
   navLinks.forEach(link => {
-    link.addEventListener('click', () => toggleMenu(false));
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href');
+      toggleMenu(false);
+
+      if (targetId && targetId.startsWith('#')) {
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          setTimeout(() => {
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+            targetEl.setAttribute('tabindex', '-1');
+            targetEl.focus({ preventScroll: true });
+          }, 120);
+        }
+      }
+    });
   });
 
   // Close on Escape key

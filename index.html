@@ -49,7 +49,7 @@
   </script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
 
@@ -86,17 +86,39 @@
         </a>
         <!-- Mobile Toggle Button -->
         <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg class="icon-hamburger" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="18" x2="21" y2="18"></line>
           </svg>
+          <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
         </button>
       </div>
     </div>
+  </header>
 
-    <!-- Mobile Drawer Navigation -->
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation">
+  <!-- Mobile Navigation Backdrop Overlay -->
+  <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" aria-hidden="true"></div>
+
+  <!-- Mobile Drawer Navigation -->
+  <aside class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation" aria-hidden="true">
+    <div class="mobile-nav__header">
+      <div class="mobile-nav__brand">
+        <img src="assets/images/logo.svg" alt="Relief Fund Logo" width="28" height="28" class="mobile-nav__logo">
+        <span class="mobile-nav__title">Menu & Navigation</span>
+      </div>
+      <button type="button" class="mobile-nav__close" id="mobile-nav-close" aria-label="Close navigation menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="mobile-nav__content">
       <ul class="mobile-nav__links">
         <li><a href="#priorities">Relief Priorities</a></li>
         <li><a href="#how-donations-help">How Donations Help</a></li>
@@ -106,13 +128,18 @@
         <li><a href="#faq">Frequently Asked Questions</a></li>
         <li><a href="#contact">Direct Contact & Verification</a></li>
       </ul>
+
       <div class="mobile-nav__cta">
-        <a href="https://pages.razorpay.com/reliefund?amount=100" class="btn btn--primary js-donate-btn">
-          Donate Now via Razorpay
+        <a href="https://pages.razorpay.com/reliefund?amount=100" class="btn btn--primary btn--full js-donate-btn">
+          Donate to Relief Fund →
         </a>
+        <p class="mobile-nav__meta">
+          Official Gateway: Razorpay<br>
+          Account: <strong>A GHOSH FUNDS</strong>
+        </p>
       </div>
-    </nav>
-  </header>
+    </div>
+  </aside>
 
   <!-- Main Content Landmark -->
   <main id="main-content">
@@ -612,6 +639,6 @@
   </footer>
 
   <!-- Main JavaScript Bundle -->
-  <script src="js/main.js?v=2"></script>
+  <script src="js/main.js?v=3"></script>
 </body>
 </html>
